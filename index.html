@@ -1,139 +1,598 @@
 <!DOCTYPE html>
 <html lang="sv">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sista minuten Hämta & Lämna</title>
-  <meta name="description" content="Snabb hämtning och leverans av möbler, paket, matvaror och återvinning. Från 100 kr + 10 kr/km. Betala med Swish.">
-  <style>
-    :root {
-      --bg: #f6f7f4;
-      --card: #ffffff;
-      --text: #1d2420;
-      --muted: #5b6660;
-      --accent: #1f7a4d;
-      --accent-dark: #17603c;
-      --border: #e2e6e1;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #131714;
-        --card: #1c221e;
-        --text: #eef2ee;
-        --muted: #a3ada6;
-        --accent: #34a36b;
-        --accent-dark: #2b8a5a;
-        --border: #2c342f;
-      }
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.55;
-    }
-    main {
-      max-width: 560px;
-      margin: 0 auto;
-      padding: 32px 16px 48px;
-    }
-    header { text-align: center; margin-bottom: 28px; }
-    h1 {
-      font-size: clamp(1.8rem, 7vw, 2.4rem);
-      line-height: 1.15;
-      margin: 0 0 12px;
-    }
-    .lead { color: var(--muted); margin: 0; font-size: 1.05rem; }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 20px;
-      margin-bottom: 16px;
-    }
-    h2 { font-size: 1.15rem; margin: 0 0 12px; }
-    ul.services {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-    }
-    ul.services li {
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 12px;
-      font-weight: 600;
-    }
-    ul.services span { display: block; font-size: 1.5rem; }
-    .price {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: var(--accent);
-      margin: 0 0 4px;
-    }
-    .note { color: var(--muted); margin: 0; font-size: 0.95rem; }
-    .btn {
-      display: block;
-      width: 100%;
-      text-align: center;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      font-size: 1.15rem;
-      font-weight: 700;
-      padding: 16px;
-      border: 0;
-      border-radius: 12px;
-      cursor: pointer;
-      margin-top: 8px;
-    }
-    .btn:hover, .btn:focus-visible { background: var(--accent-dark); }
-    .btn-secondary {
-      background: transparent;
-      color: var(--accent);
-      border: 2px solid var(--accent);
-    }
-    .btn-secondary:hover, .btn-secondary:focus-visible { background: var(--accent); color: #fff; }
-    footer { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 32px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sista minuten Hämta&amp;Lämna – beställ transport</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#4A2E1D">
+<link rel="icon" href="icon-192.png" type="image/png">
+
+<!-- iOS "Lägg till på hemskärmen" stöd -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Hämta&amp;Lämna">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap');
+
+  :root{
+    --ink:#4A2E1D;
+    --paper:#F5F3EE;
+    --amber:#F2A93B;
+    --slate:#8B6F5C;
+    --moss:#7A5230;
+    --line:#D8D3C6;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:500;
+    line-height:1.5;
+    min-height:100vh;
+  }
+  .wrap{
+    max-width:480px;
+    margin:0 auto;
+    padding:28px 20px 60px;
+  }
+
+  /* header */
+  .brand{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    row-gap:6px;
+    margin-bottom:36px;
+  }
+  .brand-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .logo-mark{
+    flex-shrink:0;
+  }
+  .brand-name{
+    font-family:'Source Serif 4',serif;
+    font-weight:700;
+    font-size:18px;
+    letter-spacing:-0.01em;
+    color:#8A5A2E;
+  }
+  .brand-company{
+    font-size:10.5px;
+    font-weight:600;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    color:var(--slate);
+    margin-top:2px;
+  }
+  .brand-name span{color:var(--ink);}
+  .brand-place{
+    font-size:13px;
+    color:var(--slate);
+  }
+
+  /* hero */
+  .splat-badge{
+    width:150px;
+    margin:0 0 8px -10px;
+  }
+  .splat-badge svg{
+    width:100%;
+    height:auto;
+    display:block;
+  }
+  .hero h1{
+    font-family:'Source Serif 4',serif;
+    font-weight:400;
+    font-size:34px;
+    line-height:1.15;
+    margin:0 0 10px;
+    max-width:15ch;
+  }
+  .hero p{
+    color:var(--slate);
+    font-size:15px;
+    max-width:34ch;
+    margin:0 0 28px;
+  }
+
+  /* route diagram */
+  .route{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:36px;
+  }
+  .pin{
+    width:11px;height:11px;border-radius:50%;
+    flex-shrink:0;
+  }
+  .pin.a{background:var(--ink);}
+  .pin.b{background:var(--amber); border:2px solid var(--ink); width:13px;height:13px;}
+  .route-line{
+    flex:1;
+    height:0;
+    border-top:2px dashed var(--slate);
+    opacity:0.55;
+  }
+  .route-label{
+    font-size:12px;
+    color:var(--slate);
+    white-space:nowrap;
+  }
+
+  /* card / form */
+  .card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:2px;
+    padding:24px 20px;
+  }
+  .card-title{
+    font-size:13px;
+    color:var(--slate);
+    margin:0 0 18px;
+  }
+
+  .field{
+    margin-bottom:16px;
+  }
+  .field label{
+    display:block;
+    font-size:12.5px;
+    color:var(--slate);
+    margin-bottom:6px;
+  }
+  .field input,
+  .field textarea,
+  .field select{
+    width:100%;
+    border:none;
+    border-bottom:1.5px solid var(--line);
+    background:transparent;
+    font-family:inherit;
+    font-size:15px;
+    color:var(--ink);
+    padding:8px 2px;
+    outline:none;
+    transition:border-color .15s ease;
+  }
+  .field input:focus,
+  .field textarea:focus,
+  .field select:focus{
+    border-bottom-color:var(--ink);
+  }
+  .field textarea{resize:vertical; min-height:56px;}
+
+  .field input[type="file"]{
+    border:1.5px dashed var(--line);
+    border-radius:2px;
+    padding:12px 10px;
+    font-size:13px;
+    color:var(--slate);
+    cursor:pointer;
+  }
+  .field input[type="file"]:hover{border-color:var(--slate);}
+
+  .photo-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:10px;
+  }
+  .photo-thumb{
+    position:relative;
+    width:64px;
+    height:64px;
+    border-radius:2px;
+    overflow:hidden;
+    border:1px solid var(--line);
+    flex-shrink:0;
+  }
+  .photo-thumb img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .photo-thumb .remove{
+    position:absolute;
+    top:2px;
+    right:2px;
+    width:18px;
+    height:18px;
+    background:rgba(27,36,48,0.75);
+    color:#fff;
+    border:none;
+    border-radius:50%;
+    font-size:12px;
+    line-height:18px;
+    text-align:center;
+    cursor:pointer;
+    padding:0;
+  }
+
+  .row2{
+    display:flex;
+    gap:14px;
+  }
+  .row2 .field{flex:1;}
+
+  /* service type pills */
+  .pills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:20px;
+  }
+  .pill{
+    border:1.5px solid var(--line);
+    border-radius:20px;
+    padding:8px 14px;
+    font-size:13px;
+    color:var(--slate);
+    cursor:pointer;
+    background:#fff;
+    transition:all .15s ease;
+    user-select:none;
+  }
+  .pill:hover{border-color:var(--ink); color:var(--ink);}
+  .pill.selected{
+    background:var(--ink);
+    border-color:var(--ink);
+    color:var(--paper);
+  }
+
+  button.submit{
+    width:100%;
+    background:var(--amber);
+    border:1.5px solid var(--ink);
+    color:var(--ink);
+    font-family:inherit;
+    font-weight:500;
+    font-size:15px;
+    padding:14px;
+    border-radius:2px;
+    cursor:pointer;
+    margin-top:8px;
+    transition:transform .1s ease;
+  }
+  button.submit:active{transform:scale(0.98);}
+  button.submit:disabled{
+    opacity:0.45;
+    cursor:not-allowed;
+  }
+
+  .hint{
+    font-size:12px;
+    color:var(--slate);
+    margin-top:10px;
+    text-align:center;
+  }
+
+  .form-error{
+    display:none;
+    font-size:13px;
+    color:#B33A2E;
+    background:#FBEAE7;
+    border:1px solid #E7B2A8;
+    border-radius:2px;
+    padding:9px 12px;
+    margin:10px 0 0;
+    text-align:center;
+  }
+  .form-error.show{display:block;}
+
+  /* confirmation */
+  .confirm{
+    display:none;
+    text-align:left;
+  }
+  .confirm.show{display:block;}
+  .confirm .stamp{
+    display:inline-block;
+    border:1.5px solid var(--moss);
+    color:var(--moss);
+    font-size:11.5px;
+    letter-spacing:.02em;
+    padding:4px 10px;
+    border-radius:20px;
+    margin-bottom:16px;
+  }
+  .confirm h2{
+    font-family:'Source Serif 4',serif;
+    font-weight:600;
+    font-size:22px;
+    margin:0 0 10px;
+  }
+  .confirm p{
+    color:var(--slate);
+    font-size:14.5px;
+    margin:0 0 4px;
+  }
+  .confirm .ref{
+    font-family:'Source Serif 4',serif;
+    font-size:15px;
+    color:var(--ink);
+    margin:16px 0 0;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+  }
+  .confirm .ref b{font-weight:600;}
+
+  .new-order{
+    background:none;
+    border:none;
+    color:var(--slate);
+    font-family:inherit;
+    font-size:13px;
+    text-decoration:underline;
+    cursor:pointer;
+    margin-top:18px;
+    padding:0;
+  }
+
+  footer{
+    margin-top:40px;
+    font-size:12px;
+    color:var(--slate);
+    text-align:center;
+  }
+</style>
 </head>
 <body>
-  <main>
-    <header>
-      <h1>Sista minuten Hämta &amp; Lämna</h1>
-      <p class="lead">Behöver du få något hämtat eller levererat – snabbt? Vi kör möbler, paket, matvaror och återvinning dit du vill, även med kort varsel.</p>
-    </header>
+<div class="wrap">
 
-    <section class="card">
-      <h2>Det här hjälper vi till med</h2>
-      <ul class="services">
-        <li><span aria-hidden="true">🛋️</span>Möbler</li>
-        <li><span aria-hidden="true">📦</span>Paket</li>
-        <li><span aria-hidden="true">🛒</span>Matvaror</li>
-        <li><span aria-hidden="true">♻️</span>Återvinning</li>
-      </ul>
-    </section>
+  <div class="brand">
+    <div class="brand-left">
+      <svg class="logo-mark" width="34" height="34" viewBox="0 0 34 34" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="32" height="32" rx="6" fill="#4A2E1D"/>
+        <path d="M9 21.5V13l8-4 8 4v8.5l-8 4-8-4z" fill="none" stroke="#F2A93B" stroke-width="1.6" stroke-linejoin="round"/>
+        <path d="M9 13l8 4 8-4M17 17v8.5" stroke="#F2A93B" stroke-width="1.6" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <div class="brand-text">
+        <div class="brand-name">Sista minuten Hämta<span>&amp;</span>Lämna</div>
+        <div class="brand-company">Melissa Leveranser AB</div>
+      </div>
+    </div>
+    <div class="brand-place">Örebro med omnejd</div>
+  </div>
 
-    <section class="card">
-      <h2>Pris</h2>
-      <p class="price">Från 100 kr + 10 kr/km</p>
-      <p class="note">Exempel: en körning på 8 km kostar 180 kr.</p>
-    </section>
+  <div class="hero">
+    <div class="splat-badge">
+      <svg viewBox="0 0 240 200" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="211.9,100.0 172.5,110.4 208.5,136.7 163.8,129.3 186.8,166.8 150.9,146.3 153.9,181.9 131.1,156.0 120.0,188.4 109.0,155.3 86.0,182.1 90.6,144.0 54.2,165.8 69.9,133.5 37.3,134.2 66.8,110.6 24.5,100.0 59.7,88.0 32.3,63.7 73.5,68.9 49.5,29.5 90.9,56.4 82.4,9.2 109.3,46.2 120.0,10.3 130.4,47.8 155.1,15.3 153.4,50.0 183.8,36.2 168.1,67.9 208.4,63.4 174.7,89.1" fill="#4A2E1D"/>
+        <text x="120" y="92" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="26" fill="#F5F3EE" transform="rotate(-6 120 92)">Snabba</text>
+        <text x="120" y="122" text-anchor="middle" font-family="'Space Grotesk', sans-serif" font-weight="700" font-size="26" fill="#F5F3EE" transform="rotate(-6 120 122)">leveranser!</text>
+      </svg>
+    </div>
+    <h1>Skicka nåt. Vi hämtar och lämnar det.</h1>
+    <p>Paket, möbler, matvaror eller grejer som ska återvinnas – berätta vad du behöver så hör vi av oss.</p>
+  </div>
 
-    <section class="card">
-      <h2>Betalning</h2>
-      <p class="note">Du betalar enkelt med <strong>Swish</strong> när uppdraget är klart.</p>
-      <p class="price" style="margin-top:12px">Swish: 073-633 68 49</p>
-    </section>
+  <div class="route">
+    <div class="pin a"></div>
+    <div class="route-line"></div>
+    <div class="route-label">från dig</div>
+    <div class="route-line"></div>
+    <div class="pin b"></div>
+  </div>
 
-    <a class="btn" href="mailto:zeitoungroupab@gmail.com?subject=Bokning%20-%20Sista%20minuten%20H%C3%A4mta%20%26%20L%C3%A4mna&amp;body=Hej!%0A%0AJag%20vill%20boka%3A%0A%0AVad%20ska%20h%C3%A4mtas%3A%20%0AH%C3%A4mtadress%3A%20%0ALeveransadress%3A%20%0ADatum%20och%20tid%3A%20%0AMitt%20telefonnummer%3A%20">Boka nu</a>
-    <a class="btn btn-secondary" href="tel:+46736336849">Ring 073-633 68 49</a>
+  <div class="card">
 
-    <footer>&copy; Sista minuten Hämta &amp; Lämna</footer>
-  </main>
+    <form id="orderForm">
+      <p class="card-title">Beställ en hämtning</p>
+
+      <div class="field">
+        <label>Vad handlar det om?</label>
+        <div class="pills" id="pills">
+          <div class="pill" data-value="Paket">Paket</div>
+          <div class="pill" data-value="Möbler / flytt">Möbler / flytt</div>
+          <div class="pill" data-value="Matvaror / inköp">Matvaror / inköp</div>
+          <div class="pill" data-value="Återvinning / kasta grejer">Återvinning / kasta grejer</div>
+          <div class="pill" data-value="Övrigt">Övrigt</div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="from">Hämtas från</label>
+        <input type="text" id="from" placeholder="Gatuadress, Örebro">
+      </div>
+
+      <div class="field">
+        <label for="to">Lämnas till</label>
+        <input type="text" id="to" placeholder="Gatuadress, Örebro">
+      </div>
+
+      <div class="field">
+        <label for="desc">Kort beskrivning</label>
+        <textarea id="desc" placeholder="T.ex. en soffa, två flyttlådor, matkassar från ICA..."></textarea>
+      </div>
+
+      <div class="field">
+        <label for="photos">Bilder på grejerna</label>
+        <input type="file" id="photos" accept="image/*" multiple>
+        <div class="photo-grid" id="photoGrid"></div>
+      </div>
+
+      <div class="row2">
+        <div class="field">
+          <label for="when">När</label>
+          <select id="when">
+            <option>Så snart som möjligt</option>
+            <option>Idag</option>
+            <option>Imorgon</option>
+            <option>Väljer datum själv</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="phone">Telefonnummer</label>
+          <input type="tel" id="phone" placeholder="07X-XXX XX XX">
+        </div>
+      </div>
+
+      <button type="submit" class="submit">Skicka förfrågan</button>
+      <p class="form-error" id="formError"></p>
+      <p class="hint">Ingen betalning nu – vi återkommer med pris innan vi kör.</p>
+    </form>
+
+    <div class="confirm" id="confirm">
+      <div class="stamp">Mottagen</div>
+      <h2>Tack, vi hör av oss.</h2>
+      <p id="confirmSummary"></p>
+      <p>Du får ett samtal eller sms på det nummer du angav, oftast inom några timmar.</p>
+      <div class="ref">Referens: <b id="refNumber"></b></div>
+      <button class="new-order" id="newOrder">Gör en ny beställning</button>
+    </div>
+
+  </div>
+
+  <footer>
+    Melissa Leveranser AB · <a href="mailto:zeitoungroupab@gmail.com" style="color:inherit;">zeitoungroupab@gmail.com</a>
+  </footer>
+
+</div>
+
+
+<script>
+  let selectedPhotos = []; // {name, dataUrl}
+
+  const photosInput = document.getElementById('photos');
+  const photoGrid = document.getElementById('photoGrid');
+
+  function renderPhotoGrid(){
+    photoGrid.innerHTML = '';
+    selectedPhotos.forEach((p, i) => {
+      const thumb = document.createElement('div');
+      thumb.className = 'photo-thumb';
+      thumb.innerHTML = `<img src="${p.dataUrl}" alt="${p.name}"><button type="button" class="remove" data-i="${i}">&times;</button>`;
+      photoGrid.appendChild(thumb);
+    });
+    photoGrid.querySelectorAll('.remove').forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectedPhotos.splice(Number(btn.dataset.i), 1);
+        renderPhotoGrid();
+      });
+    });
+  }
+
+  photosInput.addEventListener('change', () => {
+    Array.from(photosInput.files).forEach(file => {
+      const reader = new FileReader();
+      reader.onload = e => {
+        selectedPhotos.push({ name: file.name, dataUrl: e.target.result });
+        renderPhotoGrid();
+      };
+      reader.readAsDataURL(file);
+    });
+    photosInput.value = '';
+  });
+
+  const pills = document.querySelectorAll('.pill');
+  let selectedService = null;
+  pills.forEach(p => {
+    p.addEventListener('click', () => {
+      pills.forEach(x => x.classList.remove('selected'));
+      p.classList.add('selected');
+      selectedService = p.dataset.value;
+    });
+  });
+
+  const form = document.getElementById('orderForm');
+  const confirmBox = document.getElementById('confirm');
+  const summary = document.getElementById('confirmSummary');
+  const refNumber = document.getElementById('refNumber');
+
+  async function notifyByEmail(order){
+    try{
+      const data = new FormData();
+      data.append('Referens', order.ref);
+      data.append('Tjänst', order.service);
+      data.append('Från', order.from);
+      data.append('Till', order.to);
+      data.append('När', order.when);
+      data.append('Telefon', order.phone);
+      data.append('Beskrivning', order.desc || '–');
+      data.append('Antal bilder', String(order.photos.length));
+      data.append('Mottagen', order.time);
+      data.append('_subject', `Ny beställning ${order.ref} – Sista minuten Hämta&Lämna`);
+
+      await fetch('https://formspree.io/f/xyeyrvvn', {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+    }catch(err){
+      console.error('Kunde inte skicka mejlnotis:', err);
+    }
+  }
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const errorBox = document.getElementById('formError');
+    errorBox.classList.remove('show');
+
+    const from = document.getElementById('from').value.trim();
+    const to = document.getElementById('to').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const when = document.getElementById('when').value;
+
+    const missing = [];
+    if(!from) missing.push('hämtadress');
+    if(!to) missing.push('lämnadress');
+    if(!phone) missing.push('telefonnummer');
+
+    if(missing.length){
+      errorBox.textContent = 'Fyll i: ' + missing.join(', ') + '.';
+      errorBox.classList.add('show');
+      return;
+    }
+
+    const service = selectedService || 'Ospecificerat';
+    const photoNote = selectedPhotos.length
+      ? ` · ${selectedPhotos.length} bild${selectedPhotos.length > 1 ? 'er' : ''} bifogade`
+      : '';
+    summary.textContent = `${service} · från ${from} till ${to} · ${when.toLowerCase()}${photoNote}.`;
+
+    const ref = 'HL-' + Math.floor(1000 + Math.random() * 9000);
+    refNumber.textContent = ref;
+
+    const order = {
+      ref,
+      service,
+      from,
+      to,
+      when,
+      phone,
+      desc: document.getElementById('desc').value.trim(),
+      photos: [...selectedPhotos],
+      time: new Date().toLocaleString('sv-SE')
+    };
+
+    form.style.display = 'none';
+    confirmBox.classList.add('show');
+
+    notifyByEmail(order);
+  });
+
+  document.getElementById('newOrder').addEventListener('click', () => {
+    form.reset();
+    pills.forEach(x => x.classList.remove('selected'));
+    selectedService = null;
+    selectedPhotos = [];
+    renderPhotoGrid();
+    document.getElementById('formError').classList.remove('show');
+    confirmBox.classList.remove('show');
+    form.style.display = 'block';
+  });
+</script>
 </body>
 </html>
