@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sista minuten Hämta & Lämna</title>
+  <meta name="description" content="Snabb hämtning och leverans av möbler, paket, matvaror och återvinning. Från 100 kr + 10 kr/km. Betala med Swish.">
+  <style>
+    :root {
+      --bg: #f6f7f4;
+      --card: #ffffff;
+      --text: #1d2420;
+      --muted: #5b6660;
+      --accent: #1f7a4d;
+      --accent-dark: #17603c;
+      --border: #e2e6e1;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #131714;
+        --card: #1c221e;
+        --text: #eef2ee;
+        --muted: #a3ada6;
+        --accent: #34a36b;
+        --accent-dark: #2b8a5a;
+        --border: #2c342f;
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    main {
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 32px 16px 48px;
+    }
+    header { text-align: center; margin-bottom: 28px; }
+    h1 {
+      font-size: clamp(1.8rem, 7vw, 2.4rem);
+      line-height: 1.15;
+      margin: 0 0 12px;
+    }
+    .lead { color: var(--muted); margin: 0; font-size: 1.05rem; }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    h2 { font-size: 1.15rem; margin: 0 0 12px; }
+    ul.services {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    ul.services li {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px;
+      font-weight: 600;
+    }
+    ul.services span { display: block; font-size: 1.5rem; }
+    .price {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin: 0 0 4px;
+    }
+    .note { color: var(--muted); margin: 0; font-size: 0.95rem; }
+    .btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: 16px;
+      border: 0;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+    .btn:hover, .btn:focus-visible { background: var(--accent-dark); }
+    footer { text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 32px; }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Sista minuten Hämta &amp; Lämna</h1>
+      <p class="lead">Behöver du få något hämtat eller levererat – snabbt? Vi kör möbler, paket, matvaror och återvinning dit du vill, även med kort varsel.</p>
+    </header>
+
+    <section class="card">
+      <h2>Det här hjälper vi till med</h2>
+      <ul class="services">
+        <li><span aria-hidden="true">🛋️</span>Möbler</li>
+        <li><span aria-hidden="true">📦</span>Paket</li>
+        <li><span aria-hidden="true">🛒</span>Matvaror</li>
+        <li><span aria-hidden="true">♻️</span>Återvinning</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>Pris</h2>
+      <p class="price">Från 100 kr + 10 kr/km</p>
+      <p class="note">Exempel: en körning på 8 km kostar 180 kr.</p>
+    </section>
+
+    <section class="card">
+      <h2>Betalning</h2>
+      <p class="note">Du betalar enkelt med <strong>Swish</strong> när uppdraget är klart.</p>
+    </section>
+
+    <a class="btn" href="mailto:?subject=Bokning%20-%20Sista%20minuten%20H%C3%A4mta%20%26%20L%C3%A4mna&amp;body=Hej!%0A%0AJag%20vill%20boka%3A%0A%0AVad%20ska%20h%C3%A4mtas%3A%20%0AH%C3%A4mtadress%3A%20%0ALeveransadress%3A%20%0ADatum%20och%20tid%3A%20%0AMitt%20telefonnummer%3A%20">Boka nu</a>
+
+    <footer>&copy; Sista minuten Hämta &amp; Lämna</footer>
+  </main>
+</body>
+</html>
